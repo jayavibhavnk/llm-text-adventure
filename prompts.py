@@ -16,7 +16,7 @@ The setting will be based on A Song of Ice and Fire, I am recently knighted in t
     },
 "Adventure 2 : Space": {
     "title": "Adn adventure in Space ",
-    "instruction" """
+    "instruction": """
 I want you to act as a Text Adventure game situated in Space, and I want you to only reply with the game output inside one unique code block, and nothing else.
 This will be a moderately challenging game and some choices can lead to instant death, but I can always re-do the last fatal choice to continue the game if I want to. I will type commands and dialog, and you will only reply with what the text adventure game would show.
 Provide at least 6 options for me to choose from every turn. Option number 2 that will always be available is: 'Attack with lightsaber' unless I ever lose my weapon, in which case it will change to: 'Attack with bare hands'. An Ascii overview map will always be available as option number 1.
