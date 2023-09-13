@@ -14,7 +14,7 @@ import requests
 from PIL import Image
 from io import BytesIO
 
-st.set_page_config(layout="wide")
+# st.set_page_config(layout="wide")
 
 def load_pat():
   if 'CLARIFAI_PAT' not in st.secrets:
