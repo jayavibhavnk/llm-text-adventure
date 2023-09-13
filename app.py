@@ -10,6 +10,9 @@ from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory, ChatMessageHistory
 from langchain.schema import HumanMessage, AIMessage
 import streamlit.components.v1 as components
+import requests
+from PIL import Image
+from io import BytesIO
 
 st.set_page_config(layout="wide")
 
@@ -78,7 +81,7 @@ def chatbot():
         st.markdown(response)
         if image_bytes:
             image = Image.open(BytesIO(image_bytes))
-            st.image(image, caption="Generated Image", use_column_width=True)
+            st.image(image, caption="Generated Image", use_column_width=True, width = 50)
         else:
             st.warning("No image received from the API.")
 
