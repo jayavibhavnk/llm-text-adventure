@@ -62,9 +62,27 @@ def chatbot():
       with st.spinner("Thinking..."):
         response = conversation.predict(input=message, chat_history=st.session_state["chat_history"])
         # llama response format if different. It seems like human-ai chat examples are appended after the actual response.
+
+        API_URL = "https://api-inference.huggingface.co/models/jayavibhav/trial-jv"
+        headers = {"Authorization": "Bearer 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"}
+
+        def query(payload):
+            response = requests.post(API_URL, headers=headers, json=payload)
+            return response.content
+        image_bytes = query({
+            "inputs": "{}".format(response),
+        })
+        
         if st.session_state['chosen_llm'].find('lama') > -1:
           response = response.split('Human:',1)[0]
         st.markdown(response)
+        if image_bytes:
+            image = Image.open(BytesIO(image_bytes))
+            st.image(image, caption="Generated Image", use_column_width=True)
+        else:
+            st.warning("No image received from the API.")
+
+        
         message = {"role": "assistant", "content": response}
         st.session_state['chat_history'].append(message)
     st.write("\n***\n")
